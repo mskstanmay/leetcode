@@ -12,3 +12,5 @@ A compilation of leetcode questions solved by mee.
 [DAY3 - Product of array except self](https://leetcode.com/problems/product-of-array-except-self/)
 
 [DAY4 - Contiguous Array](https://leetcode.com/problems/contiguous-array/)
+
+[DAY5 - Insert Interval](https://leetcode.com/problems/insert-interval/description/)
