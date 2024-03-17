@@ -22,3 +22,34 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# Compiled Python files
+*.pyc
+*.pyo
+__pycache__/
+
+# Virtual environment
+venv/
+env/
+*.env
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# Compiled distribution files
+dist/
+build/
+
+# Local development settings
+*.sqlite3
+*.db
+*.sqlite
+
+# Logs
+*.log
+
+# Dependency directories
+__pycache__/
+lib/
+lib64/
