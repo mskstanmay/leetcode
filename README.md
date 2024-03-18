@@ -14,3 +14,5 @@ A compilation of leetcode questions solved by mee.
 [DAY4 - Contiguous Array](https://leetcode.com/problems/contiguous-array/)
 
 [DAY5 - Insert Interval](https://leetcode.com/problems/insert-interval/description/)
+
+[DAY6 - Minimum Number of Arrows to Burst Balloons](https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/description/)
