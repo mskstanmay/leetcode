@@ -20,3 +20,5 @@ A compilation of leetcode questions solved by mee.
 [DAY7 - Task Scheduler](https://leetcode.com/problems/task-scheduler/description/)
 
 [DAY8 - Merge in Between Linked Lists](https://leetcode.com/problems/merge-in-between-linked-lists/description/)
+
+[DAY9 - Reverse Linekd List](https://leetcode.com/problems/reverse-linked-list/)
