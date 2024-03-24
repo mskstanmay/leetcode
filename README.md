@@ -24,3 +24,7 @@ A compilation of leetcode questions solved by mee.
 [DAY9 - Reverse Linekd List](https://leetcode.com/problems/reverse-linked-list/)
 
 [DAY10 - Paindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/)
+
+[Day11 - Reorder List](https://leetcode.com/problems/reorder-list/)
+
+[DAY12 - Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/)
