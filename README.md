@@ -28,3 +28,5 @@ A compilation of leetcode questions solved by mee.
 [Day11 - Reorder List](https://leetcode.com/problems/reorder-list/)
 
 [DAY12 - Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/)
+
+[DAY13 - Find all duplicates in an array](https://leetcode.com/problems/find-all-duplicates-in-an-array/)
