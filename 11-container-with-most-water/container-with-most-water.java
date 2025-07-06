@@ -4,7 +4,7 @@ class Solution {
         int i = 0;
         int j = height.length - 1;
 
-        while (i <= j) {
+        while (i < j) {
             int temp = Math.min(height[i], height[j]) * (j - i);
             ans = Math.max(temp, ans);
 
