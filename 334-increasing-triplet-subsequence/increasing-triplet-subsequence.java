@@ -9,8 +9,7 @@ class Solution {
     public static boolean increasingTriplet(int[] nums) {
         int A = Integer.MAX_VALUE;
         int B = Integer.MAX_VALUE;
-        int C = Integer.MAX_VALUE;
-
+        
         for (int i = 0; i < nums.length; i++) {
             int x = nums[i];
             if (A >= x) {
@@ -18,7 +17,6 @@ class Solution {
             } else if (B >= x) {
                 B = x;
             } else {
-                C = x;
                 return true;
             }
 
