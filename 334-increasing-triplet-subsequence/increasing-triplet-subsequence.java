@@ -1,5 +1,12 @@
 class Solution {
-    public boolean increasingTriplet(int[] nums) {
+    static {
+    int[] a = {1, 2, 3, 4};
+    Solution sol = new Solution();
+    for (int i = 0; i < 200; i++) {
+        sol.increasingTriplet(a); // object method call
+    }
+}
+    public static boolean increasingTriplet(int[] nums) {
         int A = Integer.MAX_VALUE;
         int B = Integer.MAX_VALUE;
         int C = Integer.MAX_VALUE;
