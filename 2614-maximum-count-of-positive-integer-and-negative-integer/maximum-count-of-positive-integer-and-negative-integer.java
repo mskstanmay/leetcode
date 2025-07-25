@@ -18,8 +18,7 @@ class Solution {
 
         int p = bS(nums, 1);
         int z = bS(nums, 0);
-        int ng = z;
-        int pc = n  - p;
-        return Math.max(ng, pc);
+        
+        return Math.max(z, n-p);
     }
 }
