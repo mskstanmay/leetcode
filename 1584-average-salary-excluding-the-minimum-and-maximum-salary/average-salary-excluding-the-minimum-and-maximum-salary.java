@@ -15,7 +15,7 @@ class Solution {
             sum+=salary[i];
         }
 
-        sum = sum - (min+max);
+        sum -= (min+max);
         return sum/(salary.length - 2);
     }
 }
