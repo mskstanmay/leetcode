@@ -1,3 +1,10 @@
+/*
+0: Unoccupied & NOT Guarded
+1: Occupied & Wall
+2: Occupied & guard
+3: Unoccupied & Guarded
+*/
+
 class Solution {
     public int countUnguarded(int m, int n, int[][] guards, int[][] walls) {
 
@@ -16,6 +23,11 @@ class Solution {
                 int x = guard[0] + direction[0]; // Moving in directions
                 int y = guard[1] + direction[1]; // Moving in directions
                 while (x >= 0 && x < m && y >= 0 && y < n && matrix[x][y] != 1 && matrix[x][y] != 2) {
+                    /* Conditions used :
+                    1)X is positive and in bounds
+                    2)Y is positive and in bounds
+                    3)Value isn't 1 or 2 i.e wall/guard
+                    */
                     if (matrix[x][y] == 0)
                         matrix[x][y] = 3;
                     x += direction[0];
