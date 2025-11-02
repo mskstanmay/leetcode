@@ -1,47 +1,54 @@
-/*
-0: Unoccupied & NOT Guarded
-1: Occupied & Wall
-2: Occupied & guard
-3: Unoccupied & Guarded
-*/
+import java.util.*;
 
 class Solution {
     public int countUnguarded(int m, int n, int[][] guards, int[][] walls) {
+        // Create BitSets for each row to track walls, guards, and guarded cells
+        BitSet[] wall = new BitSet[m];
+        BitSet[] guard = new BitSet[m];
+        BitSet[] guarded = new BitSet[m];
+        for (int i = 0; i < m; i++) {
+            wall[i] = new BitSet(n);
+            guard[i] = new BitSet(n);
+            guarded[i] = new BitSet(n);
+        }
 
-        int[][] matrix = new int[m][n];
+        // Mark walls and guards
+        for (int[] w : walls)
+            wall[w[0]].set(w[1]);
 
-        for (int[] wall : walls)
-            matrix[wall[0]][wall[1]] = 1;
+        for (int[] g : guards)
+            guard[g[0]].set(g[1]);
 
-        for (int[] guard : guards)
-            matrix[guard[0]][guard[1]] = 2;
+        // Directions: up, down, left, right
+        int[][] dirs = {{-1,0},{1,0},{0,-1},{0,1}};
 
-        int[][] directionPointers = { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } };
-
-        for (int[] guard : guards) {
-            for (int[] direction : directionPointers) {
-                int x = guard[0] + direction[0]; // Moving in directions
-                int y = guard[1] + direction[1]; // Moving in directions
-                while (x >= 0 && x < m && y >= 0 && y < n && matrix[x][y] != 1 && matrix[x][y] != 2) {
-                    /* Conditions used :
-                    1)X is positive and in bounds
-                    2)Y is positive and in bounds
-                    3)Value isn't 1 or 2 i.e wall/guard
-                    */
-                    if (matrix[x][y] == 0)
-                        matrix[x][y] = 3;
-                    x += direction[0];
-                    y += direction[1];
+        // Mark guarded cells
+        for (int[] g : guards) {
+            int gx = g[0], gy = g[1];
+            for (int[] d : dirs) {
+                int x = gx + d[0];
+                int y = gy + d[1];
+                // Keep moving until wall or another guard blocks view
+                while (x >= 0 && x < m && y >= 0 && y < n 
+                        && !wall[x].get(y) && !guard[x].get(y)) {
+                    guarded[x].set(y);
+                    x += d[0];
+                    y += d[1];
                 }
             }
         }
 
-        int count = 0;
-        for (int i = 0; i < m; i++)
-            for (int j = 0; j < n; j++)
-                if (matrix[i][j] == 0)
-                    count++;
+        // Count unguarded cells efficiently
+        int unguarded = 0;
+        for (int i = 0; i < m; i++) {
+            // Combine wall + guard + guarded into one BitSet
+            BitSet occupied = (BitSet) wall[i].clone();
+            occupied.or(guard[i]);
+            occupied.or(guarded[i]);
+            // unguarded cells = total - occupied
+            unguarded += n - occupied.cardinality();
+        }
 
-        return count;
+        return unguarded;
     }
 }
