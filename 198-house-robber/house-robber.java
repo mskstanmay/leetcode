@@ -1,20 +1,16 @@
+import java.util.*;
 class Solution {
     public int rob(int[] nums) {
+        int n = nums.length;
+        if(n == 1) return nums[0];
+        int[] dp = new int[n];
 
-        // Edge cases
-        if (nums == null || nums.length == 0) return 0;
-        if (nums.length == 1) return nums[0];
+        dp[0] = nums[0];
+        dp[1] = Math.max(dp[0],nums[1]);
 
-        // Initial Conditions
-        int prev2 = nums[0]; // F(X-2)
-        int prev1 = Math.max(nums[0], nums[1]); // F(X-1)
-        
-        for (int i = 2; i < nums.length; i++) {
-            int current = Math.max(prev2 + nums[i], prev1);
-            prev2 = prev1; // Update (X-2)
-            prev1 = current; // Update F(X-1)
+        for (int i = 2; i < n; i++) {
+            dp[i] = Math.max(dp[i-1],dp[i-2] + nums[i]);
         }
-
-        return prev1; // The last value is the maximum amount that can be robbed
+        return dp[n-1];
     }
 }
