@@ -9,10 +9,7 @@ class Solution {
         for every index:
             - take min of lmax and rmax at that point
             - min value - current height => Trapped water 
-        */
-        /*
-        Approach 2: 
-        */
+        
         int n = height.length;
         int[] lmax = new int[n];
         int[] rmax = new int[n];
@@ -30,6 +27,55 @@ class Solution {
             res+=(Math.min(lmax[i],rmax[i]) - height[i]);
         }
         return res;
+        
+        */
+
+        /*
+        Approach 2: Using 2 pointers lmax,rmax
+            - Take min of lmax,rmax and iterate 
+            - when u get new max update other pointer
+            - for each index subtract max from height[i];
+        
+            while(i<j){
+            if(height[i] < height[j]){
+                if(height[i] >= lmax){
+                    lmax = height[i];
+                }else {
+                    ans += lmax - height[i];
+                }
+                i++;
+            }else {
+                if(height[j] >= rmax){
+                    rmax = height[j];
+                }else {
+                    ans += rmax - height[j];
+                }
+                j--;
+            }
+        }
+        return ans;
+    }
+}
+        */
+       int n = height.length;
+       int i  = 0,j = n-1;
+       int lmax = 0, rmax = 0;
+       int res = 0;
+       
+       while(i<j){
+            lmax = Math.max(lmax,height[i]);
+            rmax = Math.max(rmax,height[j]);
+
+            if(lmax < rmax){
+                res+=(lmax- height[i]);
+                i++;
+            } 
+            else {
+                res+=(rmax - height[j]);
+                j--;
+            }
+       }
+       return res;
     }
 
 }
