@@ -16,8 +16,6 @@
 
 class Solution {
     public long kthLargestLevelSum(TreeNode root, int k) {
-        // Use a standard Min-Heap (no reverseOrder) to keep the k largest sums.
-        // The smallest of the top k will stay at the top (peek).
         PriorityQueue<Long> pq = new PriorityQueue<>();
 
         Queue<TreeNode> q = new LinkedList<>();
@@ -40,13 +38,11 @@ class Solution {
             levelsCount++;
             pq.offer(lvlSum);
             
-            // If we have more than k sums, discard the smallest one
             if (pq.size() > k) {
                 pq.poll();
             }
         }
 
-        // Standard check: if the tree height is less than k
         if (levelsCount < k) {
             return -1;
         }
