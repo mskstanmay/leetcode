@@ -18,9 +18,9 @@ class Solution {
          if (root == null)
             return 0;
         int lval = 0, rval = 0;
-        if (root.left != null)
+       // if (root.left != null)
             lval = maxDepth(root.left);
-        if (root.right != null)
+        //if (root.right != null)
             rval = maxDepth(root.right);
 
         return 1 + Math.max(lval, rval);
