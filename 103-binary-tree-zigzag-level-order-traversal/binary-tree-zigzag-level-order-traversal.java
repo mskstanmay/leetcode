@@ -17,16 +17,16 @@ class Solution {
             if (leftToRight) {
                 lvlItems.addLast(current.val); // Add to end
             } else {
-                lvlItems.addFirst(current.val); // Add to beginning (reverses the level)
+                lvlItems.addFirst(current.val); // Add to beginning 
             }
 
-            // Always add children in standard Left -> Right order for the Queue
+
             if (current.left != null) q.add(current.left);
             if (current.right != null) q.add(current.right);
         }
 
         res.add(lvlItems);
-        leftToRight = !leftToRight; // Flip the flag for the next level
+        leftToRight = !leftToRight; 
     }
 
     return res;
