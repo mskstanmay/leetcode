@@ -17,12 +17,13 @@ class Solution {
     public int maxDepth(TreeNode root) {
 
         /* Approach 1: Iterative
+        */
         if (root == null)
             return 0;
         return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
         
-        Approach 2: Level Order
-        */
+        /*Approach 2: Level Order
+        
 
         Queue<TreeNode> q = new LinkedList<>();
         if (root == null)
@@ -41,6 +42,6 @@ class Solution {
             lvl++;
         }
         return lvl;
-
+*/
     }
 }
