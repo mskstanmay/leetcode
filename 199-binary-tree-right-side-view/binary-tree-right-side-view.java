@@ -14,9 +14,30 @@
  * }
  */
 class Solution {
+    /*
+    Approach - Recursion
+    */
+    public List<Integer> rightSideView(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        view(root, res, 0);
+        return res;
+    }
+
+    public void view(TreeNode root, List<Integer> res, int l) {
+        if (root == null)
+            return;
+        if (res.size() == l)
+            res.add(root.val);
+
+        view(root.right, res, l + 1);
+        view(root.left, res, l + 1);
+    }
+
+    /*
+    Approach - Level Order
+    
     void levelOrderRec(TreeNode root, int level,
-                       ArrayList<ArrayList<Integer>> res)
-    {
+            ArrayList<ArrayList<Integer>> res) {
         if (root == null)
             return;
 
@@ -28,6 +49,7 @@ class Solution {
         levelOrderRec(root.left, level + 1, res);
         levelOrderRec(root.right, level + 1, res);
     }
+
     public ArrayList<ArrayList<Integer>> levelOrder(TreeNode root) {
 
         ArrayList<ArrayList<Integer>> res = new ArrayList<>();
@@ -38,10 +60,10 @@ class Solution {
     public List<Integer> rightSideView(TreeNode root) {
         List<Integer> res = new ArrayList<>();
         ArrayList<ArrayList<Integer>> values = levelOrder(root);
-        for(ArrayList<Integer> x : values){
+        for (ArrayList<Integer> x : values) {
             int s = x.size();
-            res.add(x.get(s-1)); 
+            res.add(x.get(s - 1));
         }
         return res;
-    }
+    }*/
 }
