@@ -14,14 +14,12 @@
  * }
  */
 class Solution {
-    public boolean isLeaf(TreeNode node){
-        return node.left == null && node.right == null;
-    }
     public int helpME(TreeNode root, int CURRENT) {
         if (root == null)
             return 0;
-        CURRENT = root.val +  CURRENT * 10 ;
-        if(isLeaf(root))  return CURRENT;
+        CURRENT = root.val + CURRENT * 10;
+        if (root.left == null && root.right == null)
+            return CURRENT;
         return helpME(root.left, CURRENT) + helpME(root.right, CURRENT);
 
     }
