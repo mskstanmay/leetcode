@@ -25,6 +25,7 @@ class Solution {
     }
 
     public int sumNumbers(TreeNode root) {
+        if(root == null) return 0;
         return helpME(root, 0);
     }
 
