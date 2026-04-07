@@ -14,6 +14,9 @@
  * }
  */
 class Solution {
+    /*
+    Here we used level order traversal and when we reach root node we return as that is the cloest i.e min depth of the tree
+    */
     public int minDepth(TreeNode root) {
         if (root == null)
             return 0;
@@ -24,7 +27,7 @@ class Solution {
             int s = q.size();
             for (int i = 0; i < s; i++) {
                 TreeNode current = q.poll();
-                if (isLeaf(current))
+                if (current.left == null && current.right == null)
                     return maxDepth;
 
                 if (current.left != null)
