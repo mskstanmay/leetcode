@@ -41,8 +41,4 @@ class Solution {
 
     }
 
-    public boolean isLeaf(TreeNode root) {
-        return root.left == null && root.right == null;
-    }
-
 }
