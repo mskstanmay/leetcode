@@ -1,5 +1,6 @@
 class Solution {
     public String reverseVowels(String s) {
+        if(s.length() == 1) return s;
         String vowels = "aeiouAEIOU";
         int i = 0;
         int j = s.length() - 1;
