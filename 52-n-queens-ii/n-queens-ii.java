@@ -27,7 +27,6 @@ class Solution {
         return count;
     }
 
-    // Removed static to allow access to instance variables (board, count, n)
     private void nQueen(int c) {
         // If n == column, backtrack and Increment result by 1
         if (c == n) {
