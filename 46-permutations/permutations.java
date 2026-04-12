@@ -1,33 +1,30 @@
 class Solution {
+    boolean[] visited = new boolean[7]; //  1 <= nums.length <= 6
+    List<List<Integer>> result = new ArrayList<>();
+
     public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> res = new LinkedList<>();
         int n = nums.length;
+        backtrack(nums, new Integer[n], 0);
+        return result;
+    }
 
-        // Base case: If there's only one number, return [[nums[0]]]
-        if (n == 1) {
-            List<Integer> base = new LinkedList<>();
-            base.add(nums[0]);
-            res.add(base);
-            return res;
-        }
-
-        for (int i = 0; i < n; i++) {
-            int[] smallArray = new int[n - 1];
-            int index = 0;
-            for (int j = 0; j < n; j++) {
-                if (i == j) continue;
-                smallArray[index++] = nums[j];
+    void backtrack(int[] nums, Integer[] crr, int idx) {
+        if (idx == crr.length) {
+            List<Integer> list = new ArrayList<>();
+            for (int c : crr) {
+                list.add(c);
             }
-
-            List<List<Integer>> subPerms = permute(smallArray);
-
-            for (List<Integer> p : subPerms) {
-                List<Integer> bigList = new LinkedList<>(p);
-                bigList.add(nums[i]);
-                res.add(bigList);
-            }
+            result.add(list);
         }
-
-        return res;
+        for (int i = 0; i < nums.length; ++i) {
+            if (visited[i])
+                continue;
+            
+            // Backtracking logic
+            visited[i] = true;
+            crr[idx] = nums[i];
+            backtrack(nums, crr, idx + 1);
+            visited[i] = false;
+        }
     }
 }
