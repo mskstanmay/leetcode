@@ -41,8 +41,9 @@ class Solution {
         
         */
 
-        // 1. Array of Lists: Faster indexing than HashMap
-        List<Integer>[] graph = new ArrayList[n];
+        /* Approach 2 : Same as Approach 1 but using arraylist 
+        */
+         List<Integer>[] graph = new ArrayList[n];
         for (int i = 0; i < n; i++) {
             graph[i] = new ArrayList<>();
         }
@@ -51,14 +52,11 @@ class Solution {
 
         // 2. Build the graph (Prereq -> Course)
         for (int[] x : prerequisites) {
-            int course = x[0];
-            int prereq = x[1];
-            graph[prereq].add(course);
-            indegree[course]++;
+            graph[x[1]].add(x[0]);
+            indegree[x[0]]++;
         }
 
-        // 3. ArrayDeque is faster than LinkedList for Queue operations
-        Queue<Integer> q = new ArrayDeque<>();
+       Queue<Integer> q = new ArrayDeque<>();
         for (int i = 0; i < n; i++) {
             if (indegree[i] == 0) {
                 q.offer(i);
@@ -71,8 +69,7 @@ class Solution {
             int top = q.poll();
             coursesCompleted++;
 
-            // 4. Standard Kahn's neighbor processing
-            for (int neighbor : graph[top]) {
+           for (int neighbor : graph[top]) {
                 indegree[neighbor]--;
                 if (indegree[neighbor] == 0) {
                     q.offer(neighbor);
@@ -80,7 +77,6 @@ class Solution {
             }
         }
 
-        // If we completed all 'n' courses, there were no cycles
         return coursesCompleted == n;
     }
 }
