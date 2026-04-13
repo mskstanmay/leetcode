@@ -19,7 +19,7 @@ class MyLinkedList {
     }
 
     public int get(int index) {
-        if (index < 0 || index >= length) return -1;
+        if (index >= length) return -1;
         Node temp = head;
         for (int i = 0; i < index; i++) {
             temp = temp.next;
@@ -72,7 +72,7 @@ class MyLinkedList {
     }
 
     public void deleteAtIndex(int index) {
-        if (index < 0 || index >= length) return;
+        if (index >= length) return;
 
         if (index == 0) {
             head = head.next;
