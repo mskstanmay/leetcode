@@ -5,6 +5,7 @@ class Solution {
 
     public int minimumDistance(String word) {
         int n = word.length();
+        if(n < 3) return 0;
         int[][][] dp = new int[n + 1][26][26];
 
         for (int i = 0; i < n; i++) {
