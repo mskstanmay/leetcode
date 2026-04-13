@@ -7,7 +7,7 @@ class Solution {
         int originalColor = image[sr][sc];
         if(color == originalColor ) return image;
         image[sr][sc] = color;
-        Queue<Point> points = new LinkedList<>();
+        Queue<Point> points = new ArrayDeque<>();
         points.add(new Point(sr, sc));
 
         while (!points.isEmpty()) {
