@@ -3,17 +3,18 @@ record Point(int x, int y) {
 
 class Solution {
     public int[][] floodFill(int[][] image, int sr, int sc, int color) {
-        
+
         int originalColor = image[sr][sc];
-        if(color == originalColor ) return image;
+        if (color == originalColor)
+            return image;
         image[sr][sc] = color;
         Queue<Point> points = new ArrayDeque<>();
         points.add(new Point(sr, sc));
+        int[][] directions = { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } };
 
         while (!points.isEmpty()) {
             Point top = points.poll();
             // Up, Down, Left, Right
-            int[][] directions = { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } };
 
             for (int[] dir : directions) {
                 int nextX = top.x() + dir[0];
@@ -32,7 +33,7 @@ class Solution {
                     }
                 }
             }
-           
+
         }
 
         return image;
