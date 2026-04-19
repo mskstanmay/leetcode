@@ -9,6 +9,7 @@
  * }
  */
 class Solution {
+    /*Approach 1 : 
     public int sizeLL(ListNode head) {
         ListNode current = head;
         int c = 0;
@@ -62,5 +63,32 @@ class Solution {
             ptr--;
         }
         return arr;
+        }*/
+    
+    public int[] nextLargerNodes(ListNode head) {
+        Stack<Integer> st =  new Stack<>();
+        ListNode temp = head;
+        int l = 0;
+        while(temp!=null){
+            temp = temp.next;
+            l++;
+        }
+
+        temp = head;
+        int[] arr = new int[l];
+        int[] ans = new int[l];
+
+        for(int i = 0;temp!=null;i++){
+            arr[i] = temp.val;
+            temp=temp.next;
+        }
+        for(int i  = 0; i < l; i++){
+            while(!st.isEmpty() && arr[st.peek()] < arr[i]){
+                int idx = st.pop();
+                ans[idx] = arr[i];
+            }
+            st.push(i);
+        }
+        return ans;
     }
 }
