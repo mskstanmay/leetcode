@@ -1,18 +1,25 @@
 class Solution {
     public int searchInsert(int[] nums, int target) {
-        int i = 0;
-        int j = nums.length - 1;
+        return binary(nums, 0, nums.length - 1, target);
+    }
 
-        while (i <= j) {
-            int m = (i + j) / 2;
-            if (nums[m] == target) {
-                return m;
-            } else if (target > nums[m]) {
-                i = m + 1;
-            } else {
-                j = m - 1;
-            }
+    private int binary(int[] nums, int start, int stop, int target) {
+        if (start > stop) {
+            return start;
         }
-        return i;
+        int mid = start + (stop - start) / 2;
+        // if (start == stop && nums[start] != target) {
+        //     if (nums[start] > target)
+        //         return start;
+        //     else
+        //         return start + 1;
+        // }
+        if (nums[mid] == target) {
+            return mid;
+        } else if (nums[mid] < target) {
+            return binary(nums, mid + 1, stop, target);
+        } else {
+            return binary(nums, start, mid - 1, target);
+        }
     }
 }
