@@ -1,15 +1,21 @@
 class Solution {
     public int numberOfSubstrings(String s) {
-        int[] last = { -1, -1, -1 };
+        int l1= -1;
+        int l2= -1;
+        int l3= -1;
+        //int[] last = { -1, -1, -1 };
         int count = 0;
         int n = s.length();
 
         for (int i = 0; i < n; i++) {
-            last[s.charAt(i) - 'a'] = i;
+            
+            //last[s.charAt(i) - 'a'] = i;
+            if(s.charAt(i) == 'a') l1 =i;
+            if(s.charAt(i) == 'b') l2 =i;
+            if(s.charAt(i) == 'c') l3 =i;
 
-            if (last[0] != -1 && last[1] != -1 && last[2] != -1) {
-                int minLastSeen = Math.min(last[0], Math.min(last[1], last[2]));
-                count += minLastSeen + 1;
+            if (l1 != -1 && l2 != -1 && l3 != -1) {
+                count += Math.min(l1, Math.min(l2, l3)) + 1;
             }
         }
 
