@@ -11,6 +11,11 @@ class Solution {
         }
         Collections.reverse(res);
 
-        return res.stream().mapToInt(Integer::intValue).toArray();
+         int[] q = new int[res.size()];
+        for (int i = 0; i < res.size(); i++) {
+            q[i] = res.get(i);
+        }
+        return q;
+        //return res.stream().mapToInt(Integer::intValue).toArray();
     }
 }
