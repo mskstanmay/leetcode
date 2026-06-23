@@ -1,17 +1,16 @@
 class Solution {
     public int removeElement(int[] nums, int val) {
-        //max val given is 50;
         int i = 0;
-        int j = nums.length - 1;
+        int j = nums.length -1;
 
-        while (i <= j) {
-            if (nums[i] == val) {
-                nums[i] = nums[j];
+        while(i<=j){
+            if(nums[i]  == val){
+                nums[i ] = nums[j];
                 j--;
-            } else {
-                i++; // keep this element
+            } else{
+                i++;
             }
         }
-        return j + 1;
+        return j+1;
     }
 }
